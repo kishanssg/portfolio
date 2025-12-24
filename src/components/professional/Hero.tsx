@@ -82,24 +82,41 @@ export default function Hero() {
                     </a>
                 </motion.div>
 
-                {/* Scroll indicator */}
+                {/* Scroll indicator - Magnetic Pull design */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={isInView ? { opacity: 1 } : {}}
-                    transition={{ duration: 1, delay: 1 }}
-                    className="absolute bottom-8 left-1/2 -translate-x-1/2"
+                    transition={{ duration: 1, delay: 1.5 }}
+                    className="absolute bottom-10 left-1/2 -translate-x-1/2"
                 >
                     <motion.div
-                        animate={{ y: [0, 6, 0] }}
+                        animate={{ y: [0, 4, 0] }}
                         transition={{
-                            duration: 1.5,
+                            duration: 2.5,
                             repeat: Infinity,
                             ease: "easeInOut",
                         }}
-                        className="flex flex-col items-center gap-3 text-white/30"
+                        className="flex flex-col items-center gap-2"
                     >
-                        <span className="text-sm">Scroll</span>
-                        <div className="w-[1px] h-10 bg-white/30" />
+                        <span className="text-[11px] tracking-[0.15em] text-white/40 uppercase">
+                            Scroll
+                        </span>
+                        <div className="w-[1px] h-6 bg-gradient-to-b from-white/30 to-white/10" />
+                        <svg
+                            width="10"
+                            height="6"
+                            viewBox="0 0 10 6"
+                            fill="none"
+                            className="text-white/40 -mt-1"
+                        >
+                            <path
+                                d="M1 1L5 5L9 1"
+                                stroke="currentColor"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
+                        </svg>
                     </motion.div>
                 </motion.div>
             </div>

@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { experiences } from "@/data/experience";
+import { experiences, formatDateRange } from "@/data/experience";
 
 export default function ExperienceTimeline() {
     const ref = useRef<HTMLElement>(null);
@@ -41,9 +41,9 @@ export default function ExperienceTimeline() {
                             className="relative border-t border-white/10 py-8 md:py-12"
                         >
                             <div className="grid md:grid-cols-[200px_1fr] gap-4 md:gap-8">
-                                {/* Date */}
+                                {/* Date - formatted nicely */}
                                 <div className="text-[14px] text-[#6E6E73]">
-                                    {exp.startDate} — {exp.endDate || "Present"}
+                                    {formatDateRange(exp.startDate, exp.endDate)}
                                 </div>
 
                                 {/* Content */}
@@ -52,7 +52,7 @@ export default function ExperienceTimeline() {
                                         {exp.title}
                                     </h3>
                                     <p className="text-[14px] text-[#A1A1A6] mb-4">
-                                        {exp.company}
+                                        {exp.company} • {exp.location}
                                     </p>
 
                                     {/* Highlights */}

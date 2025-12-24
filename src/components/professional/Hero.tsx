@@ -81,19 +81,19 @@ export default function Hero() {
                     </a>
                 </motion.div>
 
-                {/* Scroll indicator - old style line, but larger */}
+                {/* Scroll indicator */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={isInView ? { opacity: 1 } : {}}
                     transition={{ duration: 1, delay: 1 }}
-                    className="absolute bottom-16 left-1/2 -translate-x-1/2"
+                    className="absolute bottom-12 left-1/2 -translate-x-1/2"
                 >
-                    <div className="flex flex-col items-center gap-3">
-                        <span className="text-[14px] text-white/40">Scroll</span>
+                    <div className="flex flex-col items-center gap-2">
+                        <span className="text-[12px] text-[#6E6E73]">Scroll</span>
                         <motion.div
-                            animate={{ y: [0, 12, 0] }}
+                            animate={{ y: [0, 8, 0] }}
                             transition={{ duration: 1.5, repeat: Infinity }}
-                            className="w-[2px] h-12 bg-white/30 rounded-full"
+                            className="w-[1px] h-8 bg-white/20"
                         />
                     </div>
                 </motion.div>

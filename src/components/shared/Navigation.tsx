@@ -1,259 +1,114 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import Link from "next/link";
-import { Menu, X, Sparkles, ArrowLeft } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 import { useMode } from "@/hooks/useMode";
-import { NAV_LINKS, SITE_CONFIG } from "@/lib/constants";
-import { cn, scrollToSection } from "@/lib/utils";
+
+const navItems = [
+    { label: "About", href: "#about" },
+    { label: "Projects", href: "#projects" },
+    { label: "Experience", href: "#experience" },
+    { label: "Skills", href: "#skills" },
+    { label: "Contact", href: "#contact" },
+];
 
 export default function Navigation() {
-    const { mode, toggleMode, isPortal } = useMode();
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState<string>("");
+    const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const { mode, toggleMode } = useMode();
 
-    // Handle scroll for sticky nav background
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 20);
+            setScrolled(window.scrollY > 10);
         };
-
-        window.addEventListener("scroll", handleScroll, { passive: true });
+        window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // Handle active section detection
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setActiveSection(entry.target.id);
-                    }
-                });
-            },
-            { rootMargin: "-50% 0px -50% 0px" }
-        );
-
-        NAV_LINKS.forEach((link) => {
-            const element = document.getElementById(link.id);
-            if (element) observer.observe(element);
-        });
-
-        return () => observer.disconnect();
-    }, []);
-
-    // Handle nav link click
-    const handleNavClick = useCallback(
-        (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-            e.preventDefault();
-            const id = href.replace("#", "");
-            scrollToSection(id);
-            setIsMobileMenuOpen(false);
-        },
-        []
-    );
-
-    // Close mobile menu on escape
-    useEffect(() => {
-        const handleEscape = (e: KeyboardEvent) => {
-            if (e.key === "Escape") setIsMobileMenuOpen(false);
-        };
-        document.addEventListener("keydown", handleEscape);
-        return () => document.removeEventListener("keydown", handleEscape);
-    }, []);
-
-    // Lock body scroll when mobile menu is open
-    useEffect(() => {
-        if (isMobileMenuOpen) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "";
-        }
-        return () => {
-            document.body.style.overflow = "";
-        };
-    }, [isMobileMenuOpen]);
-
     return (
-        <header
-            className={cn(
-                "fixed top-0 left-0 right-0 z-nav h-[var(--nav-height)] md:h-16",
-                "transition-all duration-medium ease-smooth",
-                isScrolled
-                    ? "bg-background-primary/90 backdrop-blur-md border-b border-border"
-                    : "bg-transparent"
-            )}
-        >
+        <>
             <nav
-                className="mx-auto flex h-full max-w-content items-center justify-between px-lg md:px-2xl"
-                aria-label="Main navigation"
+                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+                        ? "backdrop-blur-2xl bg-black/80 border-b border-white/10"
+                        : "bg-transparent"
+                    }`}
             >
-                {/* Logo */}
-                <Link
-                    href="/"
-                    className={cn(
-                        "text-lg font-semibold tracking-tight",
-                        "transition-colors duration-hover",
-                        "hover:text-accent-primary focus-visible:text-accent-primary"
-                    )}
-                >
-                    {SITE_CONFIG.name}
-                </Link>
+                <div className="max-w-[980px] mx-auto px-6 h-11 flex items-center justify-between">
+                    {/* Logo - minimal */}
+                    <a
+                        href="#"
+                        className="text-[21px] font-semibold text-white hover:text-white/70 transition-colors"
+                    >
+                        Kishan Goli
+                    </a>
 
-                {/* Desktop Navigation Links */}
-                <ul className="hidden md:flex items-center gap-xl">
-                    {NAV_LINKS.map((link) => (
-                        <li key={link.id}>
+                    {/* Desktop Nav - Apple style */}
+                    <div className="hidden md:flex items-center gap-8">
+                        {navItems.map((item) => (
                             <a
-                                href={link.href}
-                                onClick={(e) => handleNavClick(e, link.href)}
-                                className={cn(
-                                    "relative text-sm font-medium py-2",
-                                    "transition-colors duration-hover",
-                                    activeSection === link.id
-                                        ? "text-accent-primary"
-                                        : "text-foreground-secondary hover:text-foreground-primary"
-                                )}
+                                key={item.label}
+                                href={item.href}
+                                className="text-[12px] font-normal text-white/80 hover:text-white transition-colors tracking-tight"
                             >
-                                {link.label}
-                                {/* Active indicator */}
-                                <span
-                                    className={cn(
-                                        "absolute -bottom-1 left-0 h-0.5 bg-accent-primary",
-                                        "transition-all duration-hover",
-                                        activeSection === link.id ? "w-full" : "w-0"
-                                    )}
-                                />
+                                {item.label}
                             </a>
-                        </li>
-                    ))}
-                </ul>
+                        ))}
+                    </div>
 
-                {/* Right side: Portal Toggle + Mobile Menu Button */}
-                <div className="flex items-center gap-md">
-                    {/* Portal Toggle Button */}
+                    {/* Portal toggle - minimal */}
                     <button
                         onClick={toggleMode}
-                        className={cn(
-                            "hidden md:flex items-center gap-sm px-lg py-sm",
-                            "rounded-button text-sm font-medium",
-                            "transition-all duration-hover",
-                            isPortal
-                                ? "bg-portal-neonGreen/10 text-portal-neonGreen border border-portal-neonGreen/30 hover:bg-portal-neonGreen/20"
-                                : "bg-accent-primary/10 text-accent-primary border border-accent-primary/30 hover:bg-accent-primary/20"
-                        )}
-                        aria-label={isPortal ? "Exit Portal Mode" : "Enter Portal Mode"}
+                        className="hidden md:block text-[12px] font-normal text-white/80 hover:text-white transition-colors"
                     >
-                        {isPortal ? (
-                            <>
-                                <ArrowLeft size={16} aria-hidden="true" />
-                                <span>Exit Portal</span>
-                            </>
-                        ) : (
-                            <>
-                                <Sparkles size={16} aria-hidden="true" />
-                                <span>🌀 Bored? Enter the Portal →</span>
-                            </>
-                        )}
+                        {mode === "professional" ? "Portal →" : "← Back"}
                     </button>
 
-                    {/* Mobile Menu Button */}
+                    {/* Mobile menu button */}
                     <button
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className={cn(
-                            "md:hidden p-sm rounded-button",
-                            "transition-colors duration-hover",
-                            "hover:bg-background-secondary"
-                        )}
-                        aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-                        aria-expanded={isMobileMenuOpen}
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="md:hidden text-white/80 hover:text-white transition-colors"
+                        aria-label="Toggle menu"
                     >
-                        {isMobileMenuOpen ? (
-                            <X size={24} aria-hidden="true" />
-                        ) : (
-                            <Menu size={24} aria-hidden="true" />
-                        )}
+                        {isOpen ? <X size={20} /> : <Menu size={20} />}
                     </button>
                 </div>
             </nav>
 
-            {/* Mobile Menu Overlay */}
-            <div
-                className={cn(
-                    "fixed inset-0 top-[var(--nav-height-mobile)] bg-background-primary/95 backdrop-blur-lg",
-                    "md:hidden transition-all duration-medium ease-smooth",
-                    isMobileMenuOpen
-                        ? "opacity-100 pointer-events-auto"
-                        : "opacity-0 pointer-events-none"
-                )}
-                aria-hidden={!isMobileMenuOpen}
-            >
-                <div className="flex flex-col items-center justify-center h-full gap-3xl">
-                    {/* Mobile Nav Links */}
-                    <ul className="flex flex-col items-center gap-xl">
-                        {NAV_LINKS.map((link, index) => (
-                            <li
-                                key={link.id}
-                                style={{
-                                    animationDelay: `${index * 50}ms`,
-                                    opacity: isMobileMenuOpen ? 1 : 0,
-                                    transform: isMobileMenuOpen ? "translateY(0)" : "translateY(20px)",
-                                    transition: `opacity 300ms ease ${index * 50}ms, transform 300ms ease ${index * 50}ms`
-                                }}
-                            >
-                                <a
-                                    href={link.href}
-                                    onClick={(e) => handleNavClick(e, link.href)}
-                                    className={cn(
-                                        "text-2xl font-semibold",
-                                        "transition-colors duration-hover",
-                                        activeSection === link.id
-                                            ? "text-accent-primary"
-                                            : "text-foreground-primary hover:text-accent-primary"
-                                    )}
-                                >
-                                    {link.label}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-
-                    {/* Mobile Portal Toggle */}
-                    <button
-                        onClick={() => {
-                            toggleMode();
-                            setIsMobileMenuOpen(false);
-                        }}
-                        className={cn(
-                            "flex items-center gap-sm px-xl py-md",
-                            "rounded-button text-base font-medium",
-                            "transition-all duration-hover",
-                            isPortal
-                                ? "bg-portal-neonGreen text-background-primary"
-                                : "bg-accent-primary text-background-primary"
-                        )}
-                        style={{
-                            opacity: isMobileMenuOpen ? 1 : 0,
-                            transform: isMobileMenuOpen ? "translateY(0)" : "translateY(20px)",
-                            transition: `opacity 300ms ease 250ms, transform 300ms ease 250ms`
-                        }}
+            {/* Mobile Menu */}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.2 }}
+                        className="fixed inset-0 z-40 bg-black/95 backdrop-blur-2xl pt-16 md:hidden"
                     >
-                        {isPortal ? (
-                            <>
-                                <ArrowLeft size={20} aria-hidden="true" />
-                                <span>Exit Portal</span>
-                            </>
-                        ) : (
-                            <>
-                                <Sparkles size={20} aria-hidden="true" />
-                                <span>Enter the Portal</span>
-                            </>
-                        )}
-                    </button>
-                </div>
-            </div>
-        </header>
+                        <div className="flex flex-col items-center gap-8 py-12">
+                            {navItems.map((item) => (
+                                <a
+                                    key={item.label}
+                                    href={item.href}
+                                    onClick={() => setIsOpen(false)}
+                                    className="text-2xl font-medium text-white/80 hover:text-white transition-colors"
+                                >
+                                    {item.label}
+                                </a>
+                            ))}
+                            <button
+                                onClick={() => {
+                                    toggleMode();
+                                    setIsOpen(false);
+                                }}
+                                className="mt-4 text-lg text-white/60 hover:text-white transition-colors"
+                            >
+                                {mode === "professional" ? "Enter Portal →" : "← Exit Portal"}
+                            </button>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </>
     );
 }

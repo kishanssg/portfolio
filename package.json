@@ -1,0 +1,55 @@
+{
+    "name": "kishan-portfolio",
+    "version": "1.0.0",
+    "description": "Dual-mode interactive portfolio for Kishan Sai Sriman Goli",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "lint:fix": "next lint --fix",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "type-check": "tsc --noEmit",
+        "analyze": "cross-env ANALYZE=true next build"
+    },
+    "dependencies": {
+        "@hookform/resolvers": "^3.9.1",
+        "@react-three/drei": "^9.122.0",
+        "@react-three/fiber": "^8.18.0",
+        "@react-three/postprocessing": "^3.0.4",
+        "@react-three/rapier": "^2.2.0",
+        "clsx": "^2.1.1",
+        "ecctrl": "^1.0.97",
+        "framer-motion": "^11.11.17",
+        "gsap": "^3.12.5",
+        "lucide-react": "^0.456.0",
+        "next": "^14.2.15",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "react-hook-form": "^7.53.1",
+        "tailwind-merge": "^2.5.4",
+        "three": "^0.169.0",
+        "zod": "^3.23.8"
+    },
+    "devDependencies": {
+        "@next/bundle-analyzer": "^16.1.0",
+        "@types/node": "^22.9.0",
+        "@types/react": "^18.3.12",
+        "@types/react-dom": "^18.3.1",
+        "@types/three": "^0.169.0",
+        "autoprefixer": "^10.4.20",
+        "cross-env": "^10.1.0",
+        "eslint": "^8.57.1",
+        "eslint-config-next": "^14.2.15",
+        "postcss": "^8.4.47",
+        "prettier": "^3.3.3",
+        "prettier-plugin-tailwindcss": "^0.6.8",
+        "tailwindcss": "^3.4.14",
+        "typescript": "^5.6.3"
+    },
+    "engines": {
+        "node": ">=18.17.0"
+    }
+}

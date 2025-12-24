@@ -1,0 +1,271 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Professional Mode Colors */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --text-primary: #f5f5f5;
+    --text-secondary: #a0a0a0;
+    --accent-primary: #00d4aa;
+    --accent-secondary: #0071e3;
+    --border: #2a2a2a;
+
+    /* Portal Mode Colors */
+    --portal-bg: #000000;
+    --neon-green: #00ff88;
+    --neon-cyan: #00d4ff;
+    --neon-magenta: #ff006e;
+
+    /* Spacing */
+    --nav-height: 64px;
+    --nav-height-mobile: 56px;
+  }
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Respect user's reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    font-family: "Inter", system-ui, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-primary);
+  }
+
+  /* Selection color */
+  ::selection {
+    background-color: var(--accent-primary);
+    color: var(--bg-primary);
+  }
+
+  /* Focus outline */
+  :focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+
+  /* Skip to content link for accessibility */
+  .skip-to-content {
+    @apply absolute left-4 -translate-y-full bg-accent-primary text-background-primary px-4 py-2 rounded-button font-medium z-[1000];
+    transition: transform 200ms ease;
+  }
+
+  .skip-to-content:focus {
+    transform: translateY(1rem);
+  }
+}
+
+@layer utilities {
+
+  /* Text gradient utility */
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent;
+  }
+
+  /* Glow effect for Portal mode */
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(0, 212, 170, 0.5);
+  }
+
+  .glow-neon {
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.6);
+  }
+}
+
+/* ================================
+   COMIC BOOK DESIGN SYSTEM
+   For Portal Mode UI Elements
+================================ */
+
+:root {
+  /* Comic book fonts (loaded in layout.tsx) */
+  --font-comic-heading: var(--font-bangers), 'Bangers', cursive;
+  --font-comic-body: var(--font-carlito), 'Carlito', sans-serif;
+
+  /* Comic book colors */
+  --comic-cream: #F5E6D3;
+  --comic-black: #1a1a1a;
+  --comic-border: #000000;
+  --comic-yellow: #FFD700;
+  --comic-red: #FF4444;
+}
+
+/* Comic book text styles */
+.comic-heading {
+  font-family: var(--font-comic-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8);
+}
+
+.comic-text {
+  font-family: var(--font-comic-body);
+  line-height: 1.6;
+}
+
+/* Comic book speech bubble */
+.speech-bubble {
+  position: relative;
+  background: var(--comic-cream);
+  border: 4px solid var(--comic-border);
+  border-radius: 20px;
+  padding: 1.5rem 2rem;
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.8);
+  font-family: var(--font-comic-body);
+  color: var(--comic-black);
+  font-style: italic;
+}
+
+.speech-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid var(--comic-border);
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid var(--comic-cream);
+}
+
+/* Thought bubble variant */
+.thought-bubble {
+  position: relative;
+  background: var(--comic-cream);
+  border: 4px solid var(--comic-border);
+  border-radius: 50%;
+  padding: 2rem;
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.8);
+  font-family: var(--font-comic-body);
+  color: var(--comic-black);
+}
+
+/* Action text (POW! BAM! style) */
+.action-text {
+  font-family: var(--font-comic-heading);
+  font-size: 4rem;
+  color: var(--comic-yellow);
+  text-shadow:
+    4px 4px 0px #FF006E,
+    8px 8px 0px rgba(0, 0, 0, 0.8);
+  transform: rotate(-5deg);
+  animation: actionPulse 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes actionPulse {
+  from {
+    transform: rotate(-5deg) scale(1);
+  }
+
+  to {
+    transform: rotate(-5deg) scale(1.1);
+  }
+}
+
+/* Comic panel border */
+.comic-panel {
+  border: 6px solid var(--comic-border);
+  background: var(--comic-cream);
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.8);
+  position: relative;
+}
+
+.comic-panel::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+}
+
+/* Halftone dot pattern background */
+.halftone-bg {
+  background-image:
+    radial-gradient(circle, var(--comic-border) 1px, transparent 1px);
+  background-size: 8px 8px;
+  opacity: 0.1;
+}
+
+/* Comic button style */
+.comic-button {
+  font-family: var(--font-comic-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 1rem 2rem;
+  border: 4px solid var(--comic-border);
+  box-shadow: 4px 4px 0px var(--comic-border);
+  transition: all 0.1s ease;
+}
+
+.comic-button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--comic-border);
+}
+
+.comic-button:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px var(--comic-border);
+}

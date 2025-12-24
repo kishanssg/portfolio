@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kishanssg.vercel.app/sitemap.xml

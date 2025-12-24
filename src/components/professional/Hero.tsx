@@ -99,7 +99,7 @@ export default function Hero() {
                         className="flex flex-col items-center gap-3 text-white/30"
                     >
                         <span className="text-sm">Scroll</span>
-                        <div className="w-[1px] h-10 bg-white/30" />
+                        <ArrowDown size={20} />
                     </motion.div>
                 </motion.div>
             </div>

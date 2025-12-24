@@ -82,7 +82,7 @@ export default function Hero() {
                     </a>
                 </motion.div>
 
-                {/* Scroll indicator - positioned at absolute bottom */}
+                {/* Scroll indicator */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={isInView ? { opacity: 1 } : {}}
@@ -96,10 +96,10 @@ export default function Hero() {
                             repeat: Infinity,
                             ease: "easeInOut",
                         }}
-                        className="flex flex-col items-center gap-2 text-white/30"
+                        className="flex flex-col items-center gap-3 text-white/30"
                     >
-                        <span className="text-xs tracking-wider">SCROLL</span>
-                        <ArrowDown size={18} />
+                        <span className="text-sm">Scroll</span>
+                        <div className="w-[1px] h-10 bg-white/30" />
                     </motion.div>
                 </motion.div>
             </div>

@@ -96,10 +96,10 @@ export default function Hero() {
                             repeat: Infinity,
                             ease: "easeInOut",
                         }}
-                        className="flex flex-col items-center gap-3 text-white/30"
+                        className="flex flex-col items-center gap-2 text-white/30"
                     >
-                        <span className="text-sm">Scroll</span>
-                        <ArrowDown size={20} />
+                        <span className="text-xs">Scroll</span>
+                        <ArrowDown size={16} />
                     </motion.div>
                 </motion.div>
             </div>

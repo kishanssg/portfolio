@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 export default function Hero() {
     const ref = useRef<HTMLElement>(null);
@@ -59,7 +59,7 @@ export default function Hero() {
                     Leveraging AI to build faster, smarter, better.
                 </motion.p>
 
-                {/* CTAs - Apple style */}
+                {/* CTAs */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -82,22 +82,29 @@ export default function Hero() {
                     </a>
                 </motion.div>
 
-                {/* Scroll indicator */}
+                {/* Scroll indicator - larger and more visible */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={isInView ? { opacity: 1 } : {}}
-                    transition={{ duration: 1, delay: 1 }}
-                    className="absolute bottom-12 left-1/2 -translate-x-1/2"
+                    transition={{ duration: 1, delay: 1.5 }}
+                    className="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
                 >
-                    <div className="flex flex-col items-center gap-2">
-                        <span className="text-[12px] text-[#6E6E73]">Scroll</span>
-                        <motion.div
-                            animate={{ y: [0, 8, 0] }}
-                            transition={{ duration: 1.5, repeat: Infinity }}
-                        >
-                            <ArrowDown size={16} className="text-white/20" />
-                        </motion.div>
-                    </div>
+                    {/* Text */}
+                    <span className="text-sm font-medium tracking-widest text-white/60 uppercase">
+                        Scroll
+                    </span>
+
+                    {/* Arrow with bounce animation */}
+                    <motion.div
+                        animate={{ y: [0, 8, 0] }}
+                        transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                        }}
+                    >
+                        <ChevronDown size={28} className="text-white/50" />
+                    </motion.div>
                 </motion.div>
             </div>
         </section>

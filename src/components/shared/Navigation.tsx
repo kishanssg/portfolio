@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { useMode } from "@/hooks/useMode";
 
 const navItems = [
     { label: "About", href: "#about" },
@@ -16,7 +15,6 @@ const navItems = [
 export default function Navigation() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const { mode, toggleMode } = useMode();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -28,6 +26,14 @@ export default function Navigation() {
 
     return (
         <>
+            {/* Skip to content - hidden until focused */}
+            <a
+                href="#main-content"
+                className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded-lg focus:text-sm focus:font-medium"
+            >
+                Skip to content
+            </a>
+
             <nav
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
                         ? "backdrop-blur-2xl bg-black/80 border-b border-white/10"
@@ -35,7 +41,7 @@ export default function Navigation() {
                     }`}
             >
                 <div className="max-w-[980px] mx-auto px-6 h-11 flex items-center justify-between">
-                    {/* Logo - minimal */}
+                    {/* Logo */}
                     <a
                         href="#"
                         className="text-[21px] font-semibold text-white hover:text-white/70 transition-colors"
@@ -43,7 +49,7 @@ export default function Navigation() {
                         Kishan Goli
                     </a>
 
-                    {/* Desktop Nav - Apple style */}
+                    {/* Desktop Nav */}
                     <div className="hidden md:flex items-center gap-8">
                         {navItems.map((item) => (
                             <a
@@ -55,14 +61,6 @@ export default function Navigation() {
                             </a>
                         ))}
                     </div>
-
-                    {/* Portal toggle - minimal */}
-                    <button
-                        onClick={toggleMode}
-                        className="hidden md:block text-[12px] font-normal text-white/80 hover:text-white transition-colors"
-                    >
-                        {mode === "professional" ? "Portal →" : "← Back"}
-                    </button>
 
                     {/* Mobile menu button */}
                     <button
@@ -96,15 +94,6 @@ export default function Navigation() {
                                     {item.label}
                                 </a>
                             ))}
-                            <button
-                                onClick={() => {
-                                    toggleMode();
-                                    setIsOpen(false);
-                                }}
-                                className="mt-4 text-lg text-white/60 hover:text-white transition-colors"
-                            >
-                                {mode === "professional" ? "Enter Portal →" : "← Exit Portal"}
-                            </button>
                         </div>
                     </motion.div>
                 )}

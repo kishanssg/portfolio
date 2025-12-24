@@ -89,25 +89,18 @@ export default function Hero() {
                     transition={{ duration: 1, delay: 1 }}
                     className="absolute bottom-12 left-1/2 -translate-x-1/2"
                 >
-                    <button
-                        onClick={() => {
-                            document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
-                        }}
-                        className="flex flex-col items-center gap-2 text-[#6E6E73] hover:text-white/60 transition-colors"
-                        aria-label="Scroll to About section"
-                    >
-                        <span className="text-sm font-medium">Scroll to explore</span>
+                    <div className="flex flex-col items-center gap-4">
+                        <span className="text-sm text-[#6E6E73]">Scroll</span>
                         <motion.div
-                            animate={{ y: [0, 8, 0] }}
+                            animate={{ y: [0, 10, 0] }}
                             transition={{
                                 duration: 1.5,
                                 repeat: Infinity,
                                 ease: "easeInOut",
                             }}
-                        >
-                            <ArrowDown size={20} aria-hidden="true" />
-                        </motion.div>
-                    </button>
+                            className="w-[1px] h-16 bg-gradient-to-b from-white/30 to-transparent"
+                        />
+                    </div>
                 </motion.div>
             </div>
         </section>

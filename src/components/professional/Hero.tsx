@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { ArrowDown } from "lucide-react";
 
 export default function Hero() {
     const ref = useRef<HTMLElement>(null);
@@ -93,8 +94,9 @@ export default function Hero() {
                         <motion.div
                             animate={{ y: [0, 8, 0] }}
                             transition={{ duration: 1.5, repeat: Infinity }}
-                            className="w-[1px] h-8 bg-white/20"
-                        />
+                        >
+                            <ArrowDown size={16} className="text-white/20" />
+                        </motion.div>
                     </div>
                 </motion.div>
             </div>

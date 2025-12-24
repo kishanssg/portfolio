@@ -98,8 +98,11 @@ export default function Hero() {
                                 repeat: Infinity,
                                 ease: "easeInOut",
                             }}
-                            className="w-[1px] h-16 bg-gradient-to-b from-white/30 to-transparent"
-                        />
+                            className="flex flex-col items-center"
+                        >
+                            <div className="w-[1px] h-16 bg-gradient-to-b from-white/30 to-white/20" />
+                            <ArrowDown size={14} className="text-white/30 -mt-1" />
+                        </motion.div>
                     </div>
                 </motion.div>
             </div>

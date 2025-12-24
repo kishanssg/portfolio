@@ -82,28 +82,25 @@ export default function Hero() {
                     </a>
                 </motion.div>
 
-                {/* Scroll indicator */}
+                {/* Scroll indicator - positioned at absolute bottom */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={isInView ? { opacity: 1 } : {}}
                     transition={{ duration: 1, delay: 1 }}
-                    className="absolute bottom-12 left-1/2 -translate-x-1/2"
+                    className="absolute bottom-8 left-1/2 -translate-x-1/2"
                 >
-                    <div className="flex flex-col items-center gap-4">
-                        <span className="text-sm text-[#6E6E73]">Scroll</span>
-                        <motion.div
-                            animate={{ y: [0, 10, 0] }}
-                            transition={{
-                                duration: 1.5,
-                                repeat: Infinity,
-                                ease: "easeInOut",
-                            }}
-                            className="flex flex-col items-center"
-                        >
-                            <div className="w-[1px] h-16 bg-gradient-to-b from-white/30 to-white/20" />
-                            <ArrowDown size={14} className="text-white/30 -mt-1" />
-                        </motion.div>
-                    </div>
+                    <motion.div
+                        animate={{ y: [0, 6, 0] }}
+                        transition={{
+                            duration: 1.5,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                        }}
+                        className="flex flex-col items-center gap-2 text-white/30"
+                    >
+                        <span className="text-xs tracking-wider">SCROLL</span>
+                        <ArrowDown size={18} />
+                    </motion.div>
                 </motion.div>
             </div>
         </section>

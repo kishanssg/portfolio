@@ -88,10 +88,6 @@ export default function RootLayout({
     return (
         <html lang="en" className={`${inter.variable} ${bangers.variable} ${carlito.variable}`}>
             <body className="min-h-screen bg-background-primary text-foreground-primary antialiased">
-                {/* Skip to content link for accessibility */}
-                <a href="#main-content" className="skip-to-content">
-                    Skip to content
-                </a>
                 {children}
             </body>
         </html>

@@ -27,7 +27,7 @@ export default function ProjectsGrid() {
                         Projects
                     </p>
                     <h2 className="text-3xl md:text-5xl font-bold text-white">
-                        Featured Work
+                        What I'm Building
                     </h2>
                 </motion.div>
 

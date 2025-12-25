@@ -21,11 +21,11 @@ function ProfessionalContent() {
                 {/* About Section */}
                 <About />
 
-                {/* Projects Section */}
-                <ProjectsGrid />
-
                 {/* Experience Section */}
                 <ExperienceTimeline />
+
+                {/* Projects Section */}
+                <ProjectsGrid />
 
                 {/* Skills Section */}
                 <SkillsGrid />

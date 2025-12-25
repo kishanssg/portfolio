@@ -6,8 +6,8 @@ import { Menu, X } from "lucide-react";
 
 const navItems = [
     { label: "About", href: "#about" },
-    { label: "Projects", href: "#projects" },
     { label: "Experience", href: "#experience" },
+    { label: "Projects", href: "#projects" },
     { label: "Skills", href: "#skills" },
     { label: "Contact", href: "#contact" },
 ];
@@ -28,8 +28,8 @@ export default function Navigation() {
         <>
             <nav
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-                        ? "backdrop-blur-2xl bg-black/80 border-b border-white/10"
-                        : "bg-transparent"
+                    ? "backdrop-blur-2xl bg-black/80 border-b border-white/10"
+                    : "bg-transparent"
                     }`}
             >
                 <div className="max-w-[980px] mx-auto px-6 h-11 flex items-center justify-between">
@@ -38,7 +38,7 @@ export default function Navigation() {
                         href="#"
                         className="text-[21px] font-semibold text-white hover:text-white/70 transition-colors"
                     >
-                        Kishan Goli
+                        Software Engineer
                     </a>
 
                     {/* Desktop Nav */}

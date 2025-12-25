@@ -14,22 +14,12 @@ export default function Hero() {
             className="relative min-h-screen flex items-center justify-center px-6 pt-11"
         >
             <div className="max-w-[980px] mx-auto text-center">
-                {/* Eyebrow */}
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6 }}
-                    className="text-[14px] font-normal tracking-wide text-[#6E6E73] mb-4"
-                >
-                    Software Engineer & Builder
-                </motion.p>
-
-                {/* Main heading */}
+                {/* NAME FIRST - Largest */}
                 <motion.h1
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.8, delay: 0.1 }}
-                    className="text-6xl md:text-8xl lg:text-[96px] font-bold mb-6 text-white"
+                    transition={{ duration: 0.8 }}
+                    className="text-6xl md:text-8xl lg:text-9xl font-bold mb-4 text-white"
                     style={{
                         letterSpacing: "-0.03em",
                         lineHeight: "1.05",
@@ -38,12 +28,22 @@ export default function Hero() {
                     Kishan Goli
                 </motion.h1>
 
-                {/* Subtitle */}
+                {/* TITLE SECOND - Below name */}
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                    className="text-xl md:text-2xl font-medium mb-6 text-white/70"
+                >
+                    Software Engineer & Builder
+                </motion.p>
+
+                {/* TAGLINE THIRD */}
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="text-2xl md:text-4xl font-medium mb-4 text-[#A1A1A6]"
+                    className="text-2xl md:text-4xl font-medium mb-4 text-white/60"
                     style={{ letterSpacing: "-0.01em" }}
                 >
                     Idea → Execution → Scalable Systems

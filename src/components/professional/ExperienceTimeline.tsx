@@ -56,14 +56,14 @@ export default function ExperienceTimeline() {
                                     </p>
 
                                     {/* Highlights */}
-                                    <ul className="space-y-2">
-                                        {exp.highlights.slice(0, 3).map((highlight, i) => (
+                                    <ul className="space-y-3">
+                                        {exp.highlights.slice(0, 4).map((highlight, i) => (
                                             <li
                                                 key={i}
-                                                className="text-[14px] text-[#6E6E73] flex items-start gap-2"
+                                                className="text-[14px] text-[#6E6E73] flex items-start"
                                             >
-                                                <span className="text-white/30 mt-1.5">•</span>
-                                                {highlight}
+                                                <span className="text-white/40 mr-3 flex-shrink-0 leading-relaxed">•</span>
+                                                <span className="leading-relaxed">{highlight}</span>
                                             </li>
                                         ))}
                                     </ul>

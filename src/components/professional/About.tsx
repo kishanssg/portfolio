@@ -36,7 +36,7 @@ export default function About() {
                             Building production<br />systems at scale.
                         </h2>
                         <p className="text-[17px] text-[#A1A1A6] leading-relaxed mb-6">
-                            Full Stack Engineer building real-time systems that serve thousands of users daily.
+                            Software Engineer building real-time systems that serve thousands of users daily.
                             Currently at <span className="text-white">Park My Ride</span> (real-time parking coordination)
                             and <span className="text-white">GravyWork</span> (workforce scheduling platform).
                         </p>

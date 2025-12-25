@@ -35,7 +35,7 @@ export default function Hero() {
                     transition={{ duration: 0.6, delay: 0.1 }}
                     className="text-xl md:text-2xl font-medium mb-6 text-white/70"
                 >
-                    Full Stack Engineer building real-time systems at scale
+                    Software Engineer building real-time systems at scale
                 </motion.p>
 
                 {/* CREDENTIALS - Proof of credibility */}

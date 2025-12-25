@@ -25,9 +25,9 @@ const carlito = Carlito({
 });
 
 export const metadata: Metadata = {
-    title: "Kishan Goli | Full Stack Engineer · MS CS @ UCF",
+    title: "Kishan Goli | Software Engineer · MS CS @ UCF",
     description:
-        "Full Stack Engineer building real-time systems at scale. 10K+ daily API requests, 200+ concurrent users. MS Computer Science @ UCF (3.97 GPA). AWS Certified Developer.",
+        "Software Engineer building real-time systems at scale. 10K+ daily API requests, 200+ concurrent users. MS Computer Science @ UCF (3.97 GPA). AWS Certified Developer.",
     keywords: [
         "Software Engineer",
         "Full Stack Developer",

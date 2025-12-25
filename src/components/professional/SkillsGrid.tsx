@@ -25,9 +25,12 @@ export default function SkillsGrid() {
                     <p className="text-[12px] font-normal tracking-widest text-[#6E6E73] uppercase mb-4">
                         Skills
                     </p>
-                    <h2 className="text-3xl md:text-5xl font-bold text-white">
-                        Technologies
+                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+                        Technical Expertise
                     </h2>
+                    <p className="text-[17px] text-[#6E6E73] max-w-xl">
+                        Production-tested technologies I use to build scalable systems.
+                    </p>
                 </motion.div>
 
                 {/* Skills Grid */}

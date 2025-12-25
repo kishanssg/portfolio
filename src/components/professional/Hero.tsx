@@ -14,7 +14,7 @@ export default function Hero() {
             className="relative min-h-screen flex items-center justify-center px-6 pt-11"
         >
             <div className="max-w-[980px] mx-auto text-center">
-                {/* NAME FIRST - Largest */}
+                {/* NAME - Primary identifier */}
                 <motion.h1
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -28,36 +28,47 @@ export default function Hero() {
                     Kishan Goli
                 </motion.h1>
 
-                {/* TITLE SECOND - Below name */}
+                {/* ROLE - Clear positioning */}
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.1 }}
                     className="text-xl md:text-2xl font-medium mb-6 text-white/70"
                 >
-                    Software Engineer & Builder
+                    Full Stack Engineer building real-time systems at scale
                 </motion.p>
 
-                {/* TAGLINE THIRD */}
+                {/* CREDENTIALS - Proof of credibility */}
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="text-2xl md:text-4xl font-medium mb-4 text-white/60"
+                    className="text-lg md:text-xl font-medium mb-4 text-white/50"
                     style={{ letterSpacing: "-0.01em" }}
                 >
-                    Idea → Execution → Scalable Systems
+                    MS Computer Science @ UCF · AWS Certified Developer
                 </motion.p>
 
-                {/* Description */}
-                <motion.p
+                {/* KEY METRICS - Impact at a glance */}
+                <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.8, delay: 0.3 }}
-                    className="text-lg md:text-xl font-normal mb-12 text-[#6E6E73] max-w-2xl mx-auto"
+                    className="flex gap-6 md:gap-10 justify-center flex-wrap mb-12 text-[#6E6E73]"
                 >
-                    Leveraging AI to build faster, smarter, better.
-                </motion.p>
+                    <div className="text-center">
+                        <div className="text-2xl md:text-3xl font-bold text-white">10K+</div>
+                        <div className="text-xs md:text-sm">Daily API Requests</div>
+                    </div>
+                    <div className="text-center">
+                        <div className="text-2xl md:text-3xl font-bold text-white">200+</div>
+                        <div className="text-xs md:text-sm">Concurrent Users</div>
+                    </div>
+                    <div className="text-center">
+                        <div className="text-2xl md:text-3xl font-bold text-white">3.97</div>
+                        <div className="text-xs md:text-sm">GPA</div>
+                    </div>
+                </motion.div>
 
                 {/* CTAs */}
                 <motion.div

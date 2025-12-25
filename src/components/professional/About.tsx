@@ -4,10 +4,10 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const stats = [
-    { value: "75%", label: "Faster Frontend Builds" },
-    { value: "90%", label: "Reduction in Errors" },
-    { value: "3.97", label: "GPA at UCF" },
-    { value: "AWS", label: "Developer Associate" },
+    { value: "10K+", label: "Daily API Requests" },
+    { value: "95%", label: "Test Coverage" },
+    { value: "3.97", label: "GPA @ UCF" },
+    { value: "AWS", label: "Certified Developer" },
 ];
 
 export default function About() {
@@ -33,17 +33,20 @@ export default function About() {
                             About
                         </p>
                         <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white leading-tight">
-                            Building products<br />that scale.
+                            Building production<br />systems at scale.
                         </h2>
                         <p className="text-[17px] text-[#A1A1A6] leading-relaxed mb-6">
-                            I'm a Full Stack Developer at Park My Ride, where I build real-time
-                            systems that handle 500+ concurrent users. Previously, I reduced
-                            scheduling errors by 90% at GravyWork through intelligent automation.
+                            Full Stack Engineer building real-time systems that serve thousands of users daily.
+                            Currently at <span className="text-white">Park My Ride</span> (real-time parking coordination)
+                            and <span className="text-white">GravyWork</span> (workforce scheduling platform).
+                        </p>
+                        <p className="text-[17px] text-[#A1A1A6] leading-relaxed mb-6">
+                            <span className="text-white">MS Computer Science</span> candidate at University of Central Florida
+                            with a 3.97 GPA. AWS Developer Associate certified. Previously led cybersecurity
+                            initiatives educating 200+ students at VIT-AP.
                         </p>
                         <p className="text-[17px] text-[#A1A1A6] leading-relaxed">
-                            My approach: understand the problem deeply, then build the simplest
-                            solution that works. I leverage AI to accelerate development without
-                            sacrificing code quality.
+                            My approach: understand the problem deeply, architect for scale, ship fast, iterate based on data.
                         </p>
                     </motion.div>
 
@@ -54,7 +57,7 @@ export default function About() {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="grid grid-cols-2 gap-4"
                     >
-                        {stats.map((stat, index) => (
+                        {stats.map((stat) => (
                             <div
                                 key={stat.label}
                                 className="p-6 rounded-2xl bg-[#0A0A0A] border border-white/5"
@@ -73,3 +76,4 @@ export default function About() {
         </section>
     );
 }
+

@@ -38,7 +38,7 @@ export default function Navigation() {
                         href="#"
                         className="text-[21px] font-semibold text-white hover:text-white/70 transition-colors"
                     >
-                        Software Engineer
+                        Full Stack Engineer
                     </a>
 
                     {/* Desktop Nav */}

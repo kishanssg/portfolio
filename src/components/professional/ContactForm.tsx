@@ -92,10 +92,11 @@ export default function ContactForm() {
                         Contact
                     </p>
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-                        Let's Build Together
+                        Let's Connect
                     </h2>
                     <p className="text-[17px] text-[#A1A1A6] max-w-xl mx-auto">
-                        Whether you're hiring, collaborating, or just want to chat about tech—I'd love to hear from you.
+                        Open to full-time opportunities at companies building impactful products.
+                        Based in Orlando, FL—available for remote or relocation.
                     </p>
                 </motion.div>
 
